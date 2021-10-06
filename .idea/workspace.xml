@@ -5,27 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5239b2a0-5059-4efd-b58e-bca7cccfdd86" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/codea2-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/codea2-build.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/codea2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/codea2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generated/Hello.anno.json" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Hello.anno.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generated/Hello.fir" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Hello.fir" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generated/Hello.v" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Hello.v" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generated/Hello.vcd" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Hello.vcd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$09e11891bfd073fdb964.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2df0fb4cf4421639d12c.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6a5ba56f279c2b4cbfd9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f97f057e26b1ef561ac9.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
@@ -77,6 +74,7 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1z8DZyXecnO44wz3mLg3esXlPjk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -84,9 +82,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
     <configuration name="CPUTopTester" type="Application" factoryName="Application" temporary="true">
@@ -110,12 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633520884769</updated>
-      <workItem from="1633522804805" duration="754000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -127,5 +118,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
