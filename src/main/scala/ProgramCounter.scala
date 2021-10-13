@@ -21,7 +21,7 @@ class ProgramCounter extends Module {
     pcReg := pcReg
   }
   when(io.run && !io.stop && !io.jump) {
-    pcReg := pcReg + 1.U
+    pcReg := pcReg + 2.U
   }
   when(io.run && !io.stop && io.jump) {
     pcReg := io.programCounterJump
