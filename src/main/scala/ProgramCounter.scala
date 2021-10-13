@@ -27,4 +27,14 @@ class ProgramCounter extends Module {
     pcReg := io.programCounterJump
   }
   io.programCounter := pcReg
+
+  /*
+  val cntReg = RegInit(0.U(16.W))
+  val adder1 = cntReg + 1.U
+  val or1 = io.stop || (!io.run)
+  val mux1 = Mux(io.jump, io.programCounterJump, adder1)
+  val mux2 = Mux(or1, cntReg, mux1)
+  cntReg := mux2
+  io.programCounter := cntReg
+   */
 }
