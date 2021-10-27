@@ -1,0 +1,114 @@
+//Erosion assembly code
+
+//R0 = twenty
+//R1 = x
+//R2 = y
+//R3 = output address
+//R4 = holder
+//R5 = nineteen
+//R6 = input address
+//R7 = holder2
+//R8 = zero
+
+//Instruction:							Syntax:				Meaning:					Opcode:		Instruction interpretation
+//Arithmetic							
+//1. Instruction: Addition 				ADD R1, R2, R3;		R1 = R2 + R3				0001		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12] 
+//2. Instruction: Substraction 			SUB R1, R2, R3;		R1 = R2 - R3				0010		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12]
+//3. Instruction: Multiplication 		MULT R1, R2, R3;	R1 = R2 * R3				0011		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12]
+//4. Instruction: Immediate add			ADDI R1, R2, 4; 	R1 = R2 + 4					0100		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//5. Instruction: Immediate sub			SUBI R1, R2, 5;		R1 = R2 - 5					0101		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+
+// Data transfer
+//6. Instruction: Load immediate		LI R1, 6;			R1 = 6						0110		[Opcode 0..3],[Imm 3..12]
+//7. Instruction: Load data				LD R1, R2;			R1 = memory(R2)				0111		[Opcode 0..3],[R 4..6],[Rt 7..9]
+//8. Instruction: Store data 			SD R1, R2;			memory(R2) = R1				1000		[Opcode 0..3],[R 4..6],[Rt 7..9]
+
+//Control and flow
+//9. Instruction: Jump					JR 7;				go to inst. 7				1001		[Opcode 0..3],[Inst 4..9]
+//10. Instruction: Jump if equal 		JEQ 8, R2, R3;		if(R2 == R3) goto inst. 8	1010		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//11. Instruction: Jump if not equal	BEQ 9, R2, R3;		if(R2 != R3) goto inst. 9	1011		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//12. Instruction: Jump if less than 	JLT 10, R2, R3;		if(R2 < R3) goto inst. 10	1100		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//13. Instruction: End execution		END;				terminates execution		1101		[Opcode 0..3]
+
+
+//Assembly				Binary:
+
+SUB R0, R0, R0;		
+LI R0, 20;
+SUB R4, R4, R4;
+SUB R5, R5, R5;
+LI R5, 19
+SUB R8, R8, R8;
+
+//Loop 1 starts 
+SUB R1, R1, R1;
+
+//Loop 2 starts
+SUB R2, R2, R2;
+
+//*****OUTPUT*****//
+MULT R4, R2, R0;
+ADD R3, R4, R1;			
+ADDI R3, R3, 400;
+LI R4, 0;
+//*****ADDRESS*****//
+
+//if (x==0) then
+BEQ 39, R1, R4;
+SD R4, R3;
+
+//if (y==0) then
+BEQ 43, R2, R4;
+SD R4, R3;
+
+//if (x==19) then
+BEQ 47, R1, R5;
+SD R4, R3;
+
+//if (y==19) then
+BEQ 50, R2, R5;
+SD R4, R3;
+
+//*****INPUT*****//
+MULT R4, R2, R0;
+ADD R6, R4, R1;			
+LI R4, 0;
+LD R7, R6;
+//*****ADDRESS*****//
+
+//if lålå
+BEQ 63, R7, R4;
+SD R4, R3;
+
+//
+SUBI R4, R6, 1;
+LD R7, R4;
+JEQ 80, R7, R8
+
+ADDI R4, R6, 1;
+LD R7, R4;
+JEQ 80, R7, R8
+
+SUBI R4, R6, 20;
+LD R7, R4;
+JEQ 80, R7, R8;
+
+ADDI R4, R6, 20;
+LD R7, R4;
+JEQ 80, R7, R8
+
+JR 84;
+LI R7, 0;
+SD R7, R3;
+
+//else
+LI R7, 255;
+SD R7, R3;
+
+ADDI R1, R1, 1;
+JLT 23, R2, R0;
+
+ADDI R2, R2, 1;
+JLT 20, R1, R0;
+
+END;
