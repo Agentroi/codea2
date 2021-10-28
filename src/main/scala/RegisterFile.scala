@@ -3,9 +3,26 @@ import chisel3.util._
 
 class RegisterFile extends Module {
   val io = IO(new Bundle {
-    //Define the module interface here (inputs/outputs)
+
+    val r = Input(UInt(4.W))
+    val rt = Input(UInt(4.W))
+    val rd = Input(UInt(4.W))
+    val write = Input(Bool())
+    val data = Input(UInt(32.W))
+
+    val read1 = Output(UInt(32.W))
+    val read2 = Output(UInt(32.W))
   })
 
-  //Implement this module here
+  var registers = Reg(Vec(16,UInt(32.W)))
+  registers(0) := 0.U
+  registers(5) := 19.U
+  registers(8) := 20.U
 
+  when(io.write) {
+    registers(io.r) := io.data
+  }
+
+  io.read1 := registers(io.rt)
+  io.read2 := registers(io.rd)
 }

@@ -1,6 +1,6 @@
 //Erosion assembly code
 
-//R0 = twenty
+//R0 = zero
 //R1 = x
 //R2 = y
 //R3 = output address
@@ -8,7 +8,7 @@
 //R5 = nineteen
 //R6 = input address
 //R7 = holder2
-//R8 = zero
+//R8 = twenty
 
 //Instruction:							Syntax:				Meaning:					Opcode:		Instruction interpretation
 //Arithmetic
