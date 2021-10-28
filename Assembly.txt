@@ -11,23 +11,23 @@
 //R8 = zero
 
 //Instruction:							Syntax:				Meaning:					Opcode:		Instruction interpretation
-//Arithmetic							
-//1. Instruction: Addition 				ADD R1, R2, R3;		R1 = R2 + R3				0001		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12] 
-//2. Instruction: Substraction 			SUB R1, R2, R3;		R1 = R2 - R3				0010		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12]
-//3. Instruction: Multiplication 		MULT R1, R2, R3;	R1 = R2 * R3				0011		[Opcode 0..3],[R 4..6],[Rt 7..9],[Rd 10..12]
-//4. Instruction: Immediate add			ADDI R1, R2, 4; 	R1 = R2 + 4					0100		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
-//5. Instruction: Immediate sub			SUBI R1, R2, 5;		R1 = R2 - 5					0101		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//Arithmetic
+//1. Instruction: Addition 				ADD R1, R2, R3;		R1 = R2 + R3				0001		[Opcode 0..3],[R 4..7],[Rt 8..11],[Rd 12..15]
+//2. Instruction: Substraction 			SUB R1, R2, R3;		R1 = R2 - R3				0010		[Opcode 0..3],[R 4..7],[Rt 8..11],[Rd 12..15]
+//3. Instruction: Multiplication 		MULT R1, R2, R3;	R1 = R2 * R3				0011		[Opcode 0..3],[R 4..7],[Rt 8..11],[Rd 12..15]
+//4. Instruction: Immediate add			ADDI R1, R2, 4; 	R1 = R2 + 4					0100		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
+//5. Instruction: Immediate sub			SUBI R1, R2, 5;		R1 = R2 - 5					0101		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
 
 // Data transfer
-//6. Instruction: Load immediate		LI R1, 6;			R1 = 6						0110		[Opcode 0..3],[Imm 3..12]
-//7. Instruction: Load data				LD R1, R2;			R1 = memory(R2)				0111		[Opcode 0..3],[R 4..6],[Rt 7..9]
-//8. Instruction: Store data 			SD R1, R2;			memory(R2) = R1				1000		[Opcode 0..3],[R 4..6],[Rt 7..9]
+//6. Instruction: Load immediate		LI R1, 6;			R1 = 6						0110		[Opcode 0..3],[R 4..7],[Imm 16..31]
+//7. Instruction: Load data				LD R1, R2;			R1 = memory(R2)				0111		[Opcode 0..3],[R 4..7],[Rt 8..11]
+//8. Instruction: Store data 			SD R1, R2;			memory(R2) = R1				1000		[Opcode 0..3],[R 4..7],[Rt 8..11]
 
 //Control and flow
-//9. Instruction: Jump					JR 7;				go to inst. 7				1001		[Opcode 0..3],[Inst 4..9]
-//10. Instruction: Jump if equal 		JEQ 8, R2, R3;		if(R2 == R3) goto inst. 8	1010		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
-//11. Instruction: Jump if not equal	BEQ 9, R2, R3;		if(R2 != R3) goto inst. 9	1011		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
-//12. Instruction: Jump if less than 	JLT 10, R2, R3;		if(R2 < R3) goto inst. 10	1100		[Opcode 0..3],[R 4..6],[Rt 7..9],[Imm 10..19]
+//9. Instruction: Jump					JR 7;				go to inst. 7				1001		[Opcode 0..3],[Inst 16..31]
+//10. Instruction: Jump if equal 		JEQ R2, R3, 8;		if(R2 == R3) goto inst. 8	1010		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
+//11. Instruction: Jump if not equal	BEQ R2, R3, 9;		if(R2 != R3) goto inst. 9	1011		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
+//12. Instruction: Jump if less than 	JLT R2, R3, 10;		if(R2 < R3) goto inst. 10	1100		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
 //13. Instruction: End execution		END;				terminates execution		1101		[Opcode 0..3]
 
 

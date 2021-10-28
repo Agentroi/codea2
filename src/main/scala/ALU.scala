@@ -11,19 +11,39 @@ class ALU extends Module {
     val output = Output(SInt(32.W))
   })
   var out = Wire(SInt(32.W))
+  out := 0.S
 
   //Implement this module here
   switch (io.sel) {
-    is (1.U) {out = io.op1 + io.op2}
-    is (2.U) {out = io.op1 - io.op2}
-    is (3.U) {out = io.op1 * io.op2}
-    is (4.U) {out = io.op1 + io.op2}
-    is (5.U) {out = io.op1 - io.op2}
-    is (6.U & io.op1 === io.op2) {out = 1.S}
-    is (6.U & io.op1 =/= io.op2) {out = 0.S}
-    is (7.U & io.op1 < io.op2) {out = 1.S}
-    is (7.U & io.op1 >= io.op2) {out = 0.S}
+    is(1.U) {
+      out := io.op1 + io.op2
+    }
+    is(2.U) {
+      out := io.op1 - io.op2
+    }
+    is(3.U) {
+      out := io.op1 * io.op2
+    }
+    is(4.U) {
+      out := io.op1 + io.op2
+    }
+    is(5.U) {
+      out := io.op1 - io.op2
+    }
+    is(6.U) {
+      when(io.op1 === io.op2) {
+        out := 1.S
+      } .otherwise {
+        out := 0.S
+      }
+    }
+    is(7.U) {
+      when(io.op1 < io.op2) {
+        out := 1.S
+      } .otherwise{
+        out := 0.S
+      }
+    }
   }
-
   io.output := out
 }

@@ -8,7 +8,7 @@ class ALUTester(dut: ALU) extends PeekPokeTester(dut) {
   poke(dut.io.op1, 5)
   poke(dut.io.op2, 3)
   step(1)
-  /*
+
   //ALU Minus
   poke(dut.io.sel, 2)
   poke(dut.io.op1, 5)
@@ -56,8 +56,6 @@ class ALUTester(dut: ALU) extends PeekPokeTester(dut) {
   poke(dut.io.op1, 3)
   poke(dut.io.op2, 2)
   step(1)
-
-   */
 }
 
   object ALUTester {
