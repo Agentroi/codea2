@@ -15,21 +15,27 @@ class ALU extends Module {
 
   //Implement this module here
   switch (io.sel) {
+    //Add
     is(1.U) {
       out := io.op1 + io.op2
     }
+    //Sub
     is(2.U) {
       out := io.op1 - io.op2
     }
+    //Multiply
     is(3.U) {
       out := io.op1 * io.op2
     }
+    //Add imm?
     is(4.U) {
       out := io.op1 + io.op2
     }
+    //Sub imm?
     is(5.U) {
       out := io.op1 - io.op2
     }
+    //Equals
     is(6.U) {
       when(io.op1 === io.op2) {
         out := 1.S
@@ -37,12 +43,21 @@ class ALU extends Module {
         out := 0.S
       }
     }
+    //Less than
     is(7.U) {
       when(io.op1 < io.op2) {
         out := 1.S
       } .otherwise{
         out := 0.S
       }
+    }
+    //Skip for R2
+    is (8.U) {
+      out := io.op2
+    }
+    //Skip for R1
+    is (9.U) {
+      out := io.op1
     }
   }
   io.output := out
