@@ -9,6 +9,7 @@ class ALU extends Module {
     val sel = Input(UInt(4.W))
 
     val output = Output(SInt(32.W))
+    val bool = Output(Bool())
   })
   var out = Wire(SInt(32.W))
   out := 0.S
@@ -38,17 +39,17 @@ class ALU extends Module {
     //Equals
     is(6.U) {
       when(io.op1 === io.op2) {
-        out := 1.S
+        io.bool := true.B
       } .otherwise {
-        out := 0.S
+        io.bool := false.B
       }
     }
     //Less than
     is(7.U) {
       when(io.op1 < io.op2) {
-        out := 1.S
+        io.bool := true.B
       } .otherwise{
-        out := 0.S
+        io.bool := false.B
       }
     }
     //Skip for R2
