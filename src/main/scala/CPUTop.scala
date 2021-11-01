@@ -27,6 +27,9 @@ class CPUTop extends Module {
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
 
+  var Done = Wire(Bool())
+  Done := false.B
+
   //Connecting the modules
   programCounter.io.run := io.run
   programMemory.io.address := programCounter.io.programCounter
@@ -55,9 +58,9 @@ class CPUTop extends Module {
 
   //MemToReg Mux
   when (controlUnit.io.MemToReg) {
-    registerFile.io.write := dataMemory.io.dataRead
+    registerFile.io.data := dataMemory.io.dataRead
   } .otherwise {
-    registerFile.io.write := alu.io.output
+    registerFile.io.data := alu.io.output
   }
   //***Connection finished***
 
@@ -66,7 +69,7 @@ class CPUTop extends Module {
   alu.io.op1 := registerFile.io.read1
   alu.io.sel := controlUnit.io.ALUOp
 
-  //JumpPC Mux
+  //JumpPC And
   when (controlUnit.io.ALUJump && alu.io.bool){
     programCounter.io.jump := true.B
   } .otherwise {
@@ -82,8 +85,9 @@ class CPUTop extends Module {
   dataMemory.io.writeEnable := controlUnit.io.MemWrite
 
   //***Connection finished***
+  programCounter.io.stop := controlUnit.io.Done
 
-
+  io.done := Done
 
 
 

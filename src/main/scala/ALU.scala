@@ -4,15 +4,17 @@ import chisel3.util._
 class ALU extends Module {
   val io = IO(new Bundle {
     //Define the module interface here (inputs/outputs)
-    val op1 = Input(SInt(32.W))
-    val op2 = Input(SInt(32.W))
+    val op1 = Input(UInt(32.W))
+    val op2 = Input(UInt(32.W))
     val sel = Input(UInt(4.W))
 
-    val output = Output(SInt(32.W))
+    val output = Output(UInt(32.W))
     val bool = Output(Bool())
   })
-  var out = Wire(SInt(32.W))
-  out := 0.S
+  var out = Wire(UInt(32.W))
+  var bool = Wire(Bool())
+  bool := false.B
+  out := 0.U
 
   //Implement this module here
   switch (io.sel) {
@@ -39,17 +41,17 @@ class ALU extends Module {
     //Equals
     is(6.U) {
       when(io.op1 === io.op2) {
-        io.bool := true.B
+        bool := true.B
       } .otherwise {
-        io.bool := false.B
+        bool := false.B
       }
     }
     //Less than
     is(7.U) {
       when(io.op1 < io.op2) {
-        io.bool := true.B
+        bool := true.B
       } .otherwise{
-        io.bool := false.B
+        bool := false.B
       }
     }
     //Skip for R2
@@ -61,5 +63,6 @@ class ALU extends Module {
       out := io.op1
     }
   }
+  io.bool := bool
   io.output := out
 }

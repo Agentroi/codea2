@@ -12,20 +12,23 @@ class ControlUnit extends Module {
     val RegWrite = Output(Bool())
     val MemWrite = Output(Bool())
     val MemToReg = Output(Bool())
+    val Done = Output(Bool())
   })
   var AlUSrc = Wire(Bool())
-  var ALUOp = Output(UInt(4.W))
-  var ALUJump = Output(Bool())
-  var RegWrite = Output(Bool())
-  var MemWrite = Output(Bool())
-  var MemToReg = Output(Bool())
+  var ALUOp = Wire(UInt(4.W))
+  var ALUJump = Wire(Bool())
+  var RegWrite = Wire(Bool())
+  var MemWrite = Wire(Bool())
+  var MemToReg = Wire(Bool())
+  var Done = Wire(Bool())
 
-  AlUSrc = false.B
-  ALUOp = false.B
-  ALUJump = false.B
-  RegWrite = false.B
-  MemWrite = false.B
-  MemToReg = false.B
+  AlUSrc := false.B
+  ALUOp := false.B
+  ALUJump := false.B
+  RegWrite := false.B
+  MemWrite := false.B
+  MemToReg := false.B
+  Done := false.B
 
   switch (io.opcode) {
     //ADD R1 R2 R3
@@ -149,6 +152,9 @@ class ControlUnit extends Module {
       RegWrite = false.B
       MemToReg = false.B
     }
+    is (13.U) {
+      Done = true.B
+    }
   }
 
   io.ALUSrc := AlUSrc
@@ -157,6 +163,7 @@ class ControlUnit extends Module {
   io.RegWrite := RegWrite
   io.MemWrite := MemWrite
   io.MemToReg := MemToReg
+  io.Done := Done
 
   //Implement this module here
 
