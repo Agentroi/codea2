@@ -1,0 +1,77 @@
+LI R0, 0;
+LI R5, 19;
+LI R8, 20;
+
+//Loop 1 starts
+LI R1, 0;
+
+//Loop 2 starts
+LI R2, 0;			//a9
+
+//Save output address in R3
+MULT R4, R2, R8;	//a8
+ADD R3, R4, R1;
+ADDI R3, R3, 400;
+
+//if (x==0) then output(R3) = 0
+BEQ R1, R0, (a1);
+SD R3, R0;
+
+//if (y==0) then output(R3) = 0
+BEQ R2, R0, (a2);	//a1
+SD R3, R0;
+
+//if (x==19) then output(R3) = 0
+BEQ R1, R5, (a3);	//a2
+SD R3, R0;
+
+//if (y==19) then output(R3) = 0
+BEQ R2, R5, (a4);	//a3
+SD R3, R0;
+
+//Save input address in R4 and save value to R6
+SUBI R4, R3, 400;	//a4
+LD R6, R4;
+
+//if (Mem(x,y)==0) then output(R3) = 0
+BEQ R6, R0, (a5)
+SD R3, R0;
+JR (a7)
+
+//else 				//a5
+// if (in(R4-1) == 0) then output(R3) = 0
+SUBI R7, R4, 1;
+LD R9, R7
+JEQ R0, R9, (a6)
+
+// if (in(R4+1) == 0) then output(R3) = 0
+ADDI R7, R4, 1;
+LD R9, R7
+JEQ R0, R9, (a6)
+
+// if (in(R4-20) == 0) then output(R3) = 0
+SUB R7, R4, R8;
+LD R9, R7
+JEQ R0, R9, (a6)
+
+// if (in(R4+20) == 0) then output(R3) = 0
+ADD R7, R4, R8;
+LD R9, R7
+JEQ R0, R9, (a6)
+
+//else Output(R3) = 255
+LI R7, 255
+SD R3, R7
+JR (a7)
+
+//Output(R3) = 0
+SD R3, R0			//a6
+
+//y++
+ADDI R2, R2, 1;		//a7
+JLT R2, R8, (a8)
+
+ADDI R1, R1, 1;
+JLT R1, R8, (a9)
+
+END;
