@@ -135,7 +135,7 @@ class ControlUnit extends Module {
     //BEQ R2 R3 int (asks if R2 equals not R3 to use ALUJump)
     is (11.U) {
       AlUSrc := false.B
-      ALUOp := 6.U
+      ALUOp := 10.U
       ALUJump := true.B
 
       MemWrite := false.B

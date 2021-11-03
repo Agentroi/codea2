@@ -62,6 +62,15 @@ class ALU extends Module {
     is (9.U) {
       out := io.op1
     }
+    //Not Equals
+    is(10.U) {
+      when(io.op1 === io.op2) {
+        bool := false.B
+      } .otherwise {
+        bool := true.B
+      }
+    }
+
   }
   io.bool := bool
   io.output := out
