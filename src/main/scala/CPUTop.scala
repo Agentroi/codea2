@@ -27,69 +27,72 @@ class CPUTop extends Module {
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
 
-
-  //Connecting the modules
+  //ProgramCounter
+  programCounter.io.stop := controlUnit.io.Done
+  programCounter.io.jump := (controlUnit.io.ALUJump&&alu.io.bool)
   programCounter.io.run := io.run
+  programCounter.io.programCounterJump := programMemory.io.instructionRead(15,0)
+  //val programCounter = Output(UInt(16.W))
+
+  //ProgramMemory
   programMemory.io.address := programCounter.io.programCounter
+  //val instructionRead = Output(UInt (32.W))
 
-  //Connecting instruction to components
-  controlUnit.io.opcode := programMemory.io.instructionRead(3,0)
-  registerFile.io.r := programMemory.io.instructionRead(7,4)
-  registerFile.io.rt := programMemory.io.instructionRead(11,8)
-  registerFile.io.rd := programMemory.io.instructionRead(15,12)
+  //ControlUnit
+  controlUnit.io.opcode := programMemory.io.instructionRead(31,28)
 
-  var holder = Wire(UInt(32.W))
-  holder := 0.U
-  //ALUSrc Mux
-  when (controlUnit.io.ALUSrc) {
-    holder := programMemory.io.instructionRead(31,16)
-    alu.io.op2 := holder
-  } .otherwise {
-    alu.io.op2 := registerFile.io.read2
-  }
+  /*
+  val ALUSrc = Output(Bool())
+  val ALUOp = Output(UInt(4.W))
+  val ALUJump = Output(Bool())
+  val RegWrite = Output(Bool())
+  val MemWrite = Output(Bool())
+  val MemToReg = Output(Bool())
+  val Done = Output(Bool())
 
-  programCounter.io.programCounterJump := programMemory.io.instructionRead(31,16)
+  */
 
-  //***Connection finished***
+  //RegisterFile
 
-  //Connecting RegisterFile to components
+  registerFile.io.r := programMemory.io.instructionRead(27,24)
+  registerFile.io.rt := programMemory.io.instructionRead(23,20)
+  registerFile.io.rd := programMemory.io.instructionRead(19,16)
   registerFile.io.write := controlUnit.io.RegWrite
 
-  //MemToReg Mux
   when (controlUnit.io.MemToReg) {
     registerFile.io.data := dataMemory.io.dataRead
   } .otherwise {
     registerFile.io.data := alu.io.output
   }
-  //***Connection finished***
 
-  //Connecting ALU to components
+  //val read1 = Output(UInt(32.W))
+  //val read2 = Output(UInt(32.W))
 
+  //ALU
   alu.io.op1 := registerFile.io.read1
-  alu.io.sel := controlUnit.io.ALUOp
 
-  //JumpPC And
-  when (controlUnit.io.ALUJump && alu.io.bool){
-    programCounter.io.jump := true.B
+  when (controlUnit.io.ALUSrc) {
+    alu.io.op2 := Cat(Fill(16,programMemory.io.instructionRead(15)),programMemory.io.instructionRead(15,0))
   } .otherwise {
-    programCounter.io.jump := false.B
+    alu.io.op2 := registerFile.io.read2
   }
 
-  //***Connection finished***
+  alu.io.sel := controlUnit.io.ALUOp
 
-  //Connecting Data Memory to components
+  //val output = Output(UInt(32.W))
+  //val bool = Output(Bool())
+
+  //DataMemory
 
   dataMemory.io.address := alu.io.output
-  dataMemory.io.dataWrite := registerFile.io.read2
+  //val dataRead = Output(UInt (32.W))
   dataMemory.io.writeEnable := controlUnit.io.MemWrite
+  dataMemory.io.dataWrite := registerFile.io.read2
 
+  io.done := controlUnit.io.Done
 
-  //***Connection finished***
-  programCounter.io.stop := controlUnit.io.Done
-
-  io.done := programCounter.io.stop
-
-
+  //////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
 
 
   ////////////////////////////////////////////

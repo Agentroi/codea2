@@ -15,9 +15,6 @@ class RegisterFile extends Module {
   })
 
   var registers = Reg(Vec(16,UInt(32.W)))
-  registers(0.U) := 0.U
-  registers(5.U) := 19.U
-  registers(8.U) := 20.U
 
   when(io.write) {
     registers(io.r) := io.data
