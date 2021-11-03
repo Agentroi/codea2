@@ -21,13 +21,13 @@
 // Data transfer
 //6. Instruction: Load immediate		LI R1, 6;			R1 = 6						0110		[Opcode 0..3],[R 4..7],[Imm 16..31]
 //7. Instruction: Load data				LD R1, R2;			R1 = memory(R2)				0111		[Opcode 0..3],[R 4..7],[Rt 8..11]
-//8. Instruction: Store data 			SD R1, R2;			memory(R1) = R2				1000		[Opcode 0..3],[R 4..7],[Rt 8..11]
+//8. Instruction: Store data 			SD R1, R2;			memory(R1) = R2				1000		[Opcode 0..3],[Rt 8..11],[Rd 12..15]
 
 //Control and flow
 //9. Instruction: Jump					JR 7;				go to inst. 7				1001		[Opcode 0..3],[Inst 16..31]
-//10. Instruction: Jump if equal 		JEQ R2, R3, 8;		if(R2 == R3) goto inst. 8	1010		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
-//11. Instruction: Jump if not equal	BEQ R2, R3, 9;		if(R2 != R3) goto inst. 9	1011		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
-//12. Instruction: Jump if less than 	JLT R2, R3, 10;		if(R2 < R3) goto inst. 10	1100		[Opcode 0..3],[R 4..7],[Rt 8..11],[Imm 16..31]
+//10. Instruction: Jump if equal 		JEQ R2, R3, 8;		if(R2 == R3) goto inst. 8	1010		[Opcode 0..3],[Rt 8..11],[Rt 12..15],[Imm 16..31]
+//11. Instruction: Jump if not equal	BEQ R2, R3, 9;		if(R2 != R3) goto inst. 9	1011		[Opcode 0..3],[Rt 8..11],[Rt 12..15],[Imm 16..31]
+//12. Instruction: Jump if less than 	JLT R2, R3, 10;		if(R2 < R3) goto inst. 10	1100		[Opcode 0..3],[Rt 8..11],[Rd 12..15],[Imm 16..31]
 //13. Instruction: End execution		END;				terminates execution		1101		[Opcode 0..3]
 
 

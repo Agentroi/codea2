@@ -94,8 +94,8 @@ class ControlUnit extends Module {
     }
     //LD R1 R2
     is (7.U) {
-      AlUSrc := true.B
-      ALUOp := 8.U
+      AlUSrc := false.B
+      ALUOp := 9.U
       MemToReg := true.B
       RegWrite := true.B
 
