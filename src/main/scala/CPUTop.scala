@@ -27,8 +27,6 @@ class CPUTop extends Module {
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
 
-  var Done = Wire(Bool())
-  Done := false.B
 
   //Connecting the modules
   programCounter.io.run := io.run
@@ -40,10 +38,11 @@ class CPUTop extends Module {
   registerFile.io.rt := programMemory.io.instructionRead(11,8)
   registerFile.io.rd := programMemory.io.instructionRead(15,12)
 
-  var holder = UInt(32.W)
+  var holder = Wire(UInt(32.W))
+  holder := 0.U
   //ALUSrc Mux
   when (controlUnit.io.ALUSrc) {
-    holder = programMemory.io.instructionRead(31,16)
+    holder := programMemory.io.instructionRead(31,16)
     alu.io.op2 := holder
   } .otherwise {
     alu.io.op2 := registerFile.io.read2
@@ -84,10 +83,11 @@ class CPUTop extends Module {
   dataMemory.io.dataWrite := registerFile.io.read2
   dataMemory.io.writeEnable := controlUnit.io.MemWrite
 
+
   //***Connection finished***
   programCounter.io.stop := controlUnit.io.Done
 
-  io.done := Done
+  io.done := programCounter.io.stop
 
 
 

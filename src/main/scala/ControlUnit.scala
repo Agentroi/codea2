@@ -23,7 +23,7 @@ class ControlUnit extends Module {
   var Done = Wire(Bool())
 
   AlUSrc := false.B
-  ALUOp := false.B
+  ALUOp := 0.U
   ALUJump := false.B
   RegWrite := false.B
   MemWrite := false.B
