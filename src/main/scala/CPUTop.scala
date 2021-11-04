@@ -84,10 +84,10 @@ class CPUTop extends Module {
 
   //DataMemory
 
-  dataMemory.io.address := alu.io.output
+  dataMemory.io.address := registerFile.io.read1
   //val dataRead = Output(UInt (32.W))
   dataMemory.io.writeEnable := controlUnit.io.MemWrite
-  dataMemory.io.dataWrite := registerFile.io.read2
+  dataMemory.io.dataWrite := alu.io.output
 
   io.done := controlUnit.io.Done
 

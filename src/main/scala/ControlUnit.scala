@@ -105,7 +105,7 @@ class ControlUnit extends Module {
     //SD R1 R2 (mistake, notice R1 R2 should be swapped)
     is (8.U) {
       AlUSrc := false.B
-      ALUOp := 9.U
+      ALUOp := 8.U
       MemWrite := true.B
       RegWrite := false.B
 
