@@ -13,9 +13,10 @@ MULT R4, R2, R8;	//a8
 ADD R3, R4, R1;
 ADDI R3, R3, 400;
 
+NO LONGER IN USE/////////////////////////
 //if (x==0) then output(R3) = 0
 BEQ R1, R0, (a1);
-SD R3, R0;
+JR R3, R0;
 
 //if (y==0) then output(R3) = 0
 BEQ R2, R0, (a2);	//a1
@@ -28,6 +29,19 @@ SD R3, R0;
 //if (y==19) then output(R3) = 0
 BEQ R2, R5, (a4);	//a3
 SD R3, R0;
+////////////////////////////////////////
+
+//if (x==0) then output(R3) = 0
+JEQ R1, R0, (a6);
+
+//if (y==0) then output(R3) = 0
+JEQ R2, R0, (a6);
+
+//if (x==19) then output(R3) = 0
+JEQ R1, R5, (a6);
+
+//if (y==19) then output(R3) = 0
+JEQ R2, R5, (a6);
 
 //Save input address in R4 and save value to R6
 SUBI R4, R3, 400;	//a4
